@@ -13,4 +13,6 @@ function error(){
 ln -s -f "$BUNDLE_SOURCE" "$BUNDLE_DEST" || error "Error creating link"
 osascript -e 'tell app "TextMate" to reload bundles' || error "Error reloading bundles"
 
+gem list --local --no-versions | grep -q '^git$' || error "Install git gem: sudo gem install git"
+
 echo "Done."
