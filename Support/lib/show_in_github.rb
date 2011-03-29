@@ -14,6 +14,16 @@ module ShowInGitHub
     git.file_to_github_url(git.best_github_remote)
   end
   
+  def history_url_for(file_path)
+    url = url_for(file_path)
+    url.sub! /blob/, 'commits'
+  end
+  
+  def blame_url_for(file_path)
+    url = url_for(file_path)
+    url.sub! /blob/, 'blame'
+  end
+  
   # TODO - investigate using "git blame -l -s -L 3,3 app/models/user.rb" instead
   # -l complete hash
   # -s strips user fu
