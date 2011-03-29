@@ -10,7 +10,14 @@ function error(){
 	exit 1
 }
 
-ln -s -f "$BUNDLE_SOURCE" "$BUNDLE_DEST" || error "Error creating link"
+if [ -h "$BUNDLE_DEST" ]; then
+	if [[ `readlink "$BUNDLE_DEST"` != "$BUNDLE_SOURCE" ]]; then
+		error "$BUNDLE_DEST is already linked to something else"
+	fi
+else
+	ln -s -f "$BUNDLE_SOURCE" "$BUNDLE_DEST" || error "Error creating link"
+fi
+
 osascript -e 'tell app "TextMate" to reload bundles' || error "Error reloading bundles"
 
 gem list --local --no-versions | grep -q '^git$' || error "Install git gem: sudo gem install git"
