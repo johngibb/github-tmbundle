@@ -12,7 +12,7 @@
 	<key>input</key>
 	<string>document</string>
 	<key>keyEquivalent</key>
-	<string>^~@g</string>
+	<string>@b</string>
 	<key>name</key>
 	<string>Show Blame in GitHub</string>
 	<key>output</key>

@@ -12,7 +12,7 @@
 	<key>input</key>
 	<string>document</string>
 	<key>keyEquivalent</key>
-	<string>^~@g</string>
+	<string>~@h</string>
 	<key>name</key>
 	<string>Show History in GitHub</string>
 	<key>output</key>
