@@ -1,0 +1,11 @@
+#! /usr/bin/env bash
+
+BUNDLES_DIR="$HOME/Library/Application Support/TextMate/Bundles"
+
+BUNDLE_SOURCE=$(cd $(dirname "$0") && pwd)
+BUNDLE_DEST="$BUNDLES_DIR/GitHub.tmbundle"
+
+ln -s -f "$BUNDLE_SOURCE" "$BUNDLE_DEST" || (echo "Error creating link" && exit 1)
+osascript -e 'tell app "TextMate" to reload bundles' || (echo "Error reloading bundles" && exit 1)
+
+echo "Done."
